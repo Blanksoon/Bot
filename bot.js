@@ -10,9 +10,9 @@ var port = process.env.PORT || 7777;
 //app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-  var text = req.body.events[0].message.text 
-  var sender = req.body.events[0].source.userId
-  var replyToken = req.body.events[0].replyToken
+  var text = req.events[0].message.text 
+  var sender = req.events[0].source.userId
+  var replyToken = req.events[0].replyToken
   if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
      sendText(sender, text)
   }

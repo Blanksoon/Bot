@@ -48,8 +48,9 @@ app.post('/bot.js', (req, res) => {
 
 
 function sendText (sender, text) {
+  let data = {}
   if(text == 'sideline'){
-    let data = {
+    data = {
     to: sender,
     messages: [
       {
@@ -59,7 +60,7 @@ function sendText (sender, text) {
     ]
   }
   }else{
-  let data = {
+  data = {
     to: sender,
     messages: [
       {

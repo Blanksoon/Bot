@@ -5,6 +5,17 @@ var app = express();
 app.use(express.bodyParser());
 app.set('port', (process.env.PORT || 4000))
 
+app.get('/', function(request, response){
+  var text = request.body.events.message.text
+  var sender = request.body.events.source.userId
+  var replyToken = request.body.events.replyToken
+  //console.log(text);      // your JSON
+  //console.log(sender);      // your JSON
+  //console.log(replyToken);      // your JSON
+  response.send(request.body);    // echo the result back
+  //response.sendStatus(200)
+});
+
 app.post('/', function(request, response){
   var text = request.body.events.message.text
   var sender = request.body.events.source.userId

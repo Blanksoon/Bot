@@ -35,14 +35,30 @@ app.post('/bot.js', (req, res) => {
   console.log(text, sender, replyToken)
   console.log(typeof sender, typeof text)
   // console.log(req.body.events[0])
-  if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
-    sendText(sender, text)
-  }
+  // if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
+  //   sendText(sender, text)
+  // }
+  if(sender == 'Ufdfa4b8014b183970b1b89965b79b87')
+  if (text === 'สวัสดี' || text === 'Hello' || text === 'hello' || text === 'sideline') {
+  //   sendText(sender, text)
+  // }
   res.sendStatus(200)
   }
 })
 
+
 function sendText (sender, text) {
+  if(text == 'sideline'){
+    let data = {
+    to: sender,
+    messages: [
+      {
+        type: 'text',
+        text: 'https://xn--42cn1aug7dc0hrhc1gd.com/forum.php?mod=forumdisplay&fid=65 กรุณาคลิกลิ้งค์'
+      }
+    ]
+  }
+  }else{
   let data = {
     to: sender,
     messages: [
@@ -51,6 +67,7 @@ function sendText (sender, text) {
         text: 'สวัสดีค่ะ เราเป็นผู้ช่วยปรึกษาด้านความรัก สำหรับหมามิ้น 💞 ' + sender
       }
     ]
+  }
   }
   request({
     headers: {

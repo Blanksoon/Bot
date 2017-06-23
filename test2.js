@@ -1,7 +1,17 @@
+const line = require('@line/bot-sdk');
 var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
 var app = express();
+
+const client = new line.Client({
+  channelAccessToken: 'r+Xpxb3DpVJI3c89AJYaz40Kjv7LYKj+8EdAnS3gwv9GtHgmefm9wjjBTM2Cs2jaYLyXP0oRgw1MCisaeZ4kWhrja1PDjvlw1plYo5ewqCFzlSKhcTvu7AVEMk+mt1JxePc28R/mIEQCzCDpv6DAVAdB04t89/1O/w1cDnyilFU='
+});
+
+const message = {
+  type: 'text',
+  text: 'Hello World!'
+};
 
 app.use(express.bodyParser());
 app.set('port', (process.env.PORT || 4000))
@@ -27,9 +37,11 @@ app.post('/', function(req, res){
   res.send(req.body);    // echo the result back
   if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
     console.log("in text")
-    sendText(sender, text)
-  }
-  //response.sendStatus(200)
+    client.replyMessage( replyToken, message)
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+    }
 });
 
 function sendText (sender, text) {

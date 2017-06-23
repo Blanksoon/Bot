@@ -19,33 +19,11 @@ app.get('/', (req, res) => {
   res.sendStatus(200)
 })
 
-function sendText (sender, text) {
-  let data = {
-    to: sender,
-    messages: [
-      {
-        type: 'text',
-        text: 'สวัสดีค่ะ เราเป็นผู้ช่วยปรึกษาด้านความรัก สำหรับหมามิ้น 💞'
-      }
-    ]
-  }
-  request({
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer key Api'
-    },
-    url: 'https://api.line.me/v2/bot/message/push',
-    method: 'POST',
-    body: data,
-    json: true
-  }, function (err, res, body) {
-    if (err) console.log('error')
-    if (res) console.log('success')
-    if (body) console.log(body)
-  })
-}
-
 app.post('/', (req, res) => {
+  if(req.body.events == undefined){
+    res.sendStatus(200)
+  }
+  else{
   var text = req.body.events.message.text
   var sender = req.body.events.source.userId
   var replyToken = req.body.events.replyToken
@@ -56,6 +34,7 @@ app.post('/', (req, res) => {
     sendText(sender, text)
   }
   res.sendStatus(200)
+  }
 })
 
 function sendText (sender, text) {

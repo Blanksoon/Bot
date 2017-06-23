@@ -38,10 +38,10 @@ app.post('/bot.js', (req, res) => {
   // if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
   //   sendText(sender, text)
   // }
-  if(sender == 'Ufdfa4b8014b183970b1b89965b79b87')
+  //if(sender == 'Ufdfa4b8014b183970b1b89965b79b87')
   if (text === 'สวัสดี' || text === 'Hello' || text === 'hello' || text === 'sideline') {
-  //   sendText(sender, text)
-  // }
+    sendText(sender, text)
+  }
   res.sendStatus(200)
   }
 })

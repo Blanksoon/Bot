@@ -55,7 +55,7 @@ function sendText (sender, text) {
     messages: [
       {
         type: 'text',
-        text: 'https://xn--42cn1aug7dc0hrhc1gd.com/forum.php?mod=forumdisplay&fid=65 กรุณาคลิกลิ้งค์'
+        text: 'www.google.com กรุณาคลิกลิ้งค์'
       }
     ]
   }

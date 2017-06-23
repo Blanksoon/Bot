@@ -29,9 +29,11 @@ app.post('/bot.js', (req, res) => {
     res.sendStatus(200)
   }
   else{
-  var text = req.body.events[0].message.text
-  var sender = req.body.events[0].source.userId
-  var replyToken = req.body.events[0].replyToken
+  var text = req.body.message.text
+  //var text = req.body.events[0].message.text
+  var sender = 'U75f70c75f265fc94b607ec8daa855f12';
+  //var sender = req.body.events[0].source.userId
+  //var replyToken = req.body.events[0].replyToken
   console.log(text, sender, replyToken)
   console.log(typeof sender, typeof text)
   // console.log(req.body.events[0])
@@ -39,7 +41,10 @@ app.post('/bot.js', (req, res) => {
   //   sendText(sender, text)
   // }
   //if(sender == 'Ufdfa4b8014b183970b1b89965b79b87')
-  if (text === 'สวัสดี' || text === 'Hello' || text === 'hello' || text === 'www') {
+  // if (text === 'สวัสดี' || text === 'Hello' || text === 'hello' || text === 'www') {
+  //   sendText(sender, text)
+  // }
+  if(text === "send"){
     sendText(sender, text)
   }
   res.sendStatus(200)
@@ -48,9 +53,7 @@ app.post('/bot.js', (req, res) => {
 
 
 function sendText (sender, text) {
-  let data = {}
-  if(text == 'sideline'){
-    data = {
+  let data = {
     to: sender,
     messages: [
       {
@@ -58,17 +61,27 @@ function sendText (sender, text) {
         text: 'www.google.com กรุณาคลิกลิ้งค์'
       }
     ]
-  }
-  }else{
-  data = {
-    to: sender,
-    messages: [
-      {
-        type: 'text',
-        text: 'สวัสดี' + sender
-      }
-    ]
-  }
+  
+  // if(text == 'wwww'){
+  //   data = {
+  //   to: sender,
+  //   messages: [
+  //     {
+  //       type: 'text',
+  //       text: 'www.google.com กรุณาคลิกลิ้งค์'
+  //     }
+  //   ]
+  // }
+  // }else{
+  // data = {
+  //   to: sender,
+  //   messages: [
+  //     {
+  //       type: 'text',
+  //       text: 'สวัสดี' + sender
+  //     }
+  //   ]
+  // }
   }
   request({
     headers: {

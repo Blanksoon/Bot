@@ -6,7 +6,7 @@ var app = express()
 app.set('port', (process.env.PORT || 4000))
 //app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
-app.get('/webhook', (req, res) => {
+app.get('/bot.js', (req, res) => {
   // var text = req.body.events.message.text
   // var sender = req.body.events.source.userId
   // var replyToken = req.body.events.replyToken
@@ -19,7 +19,7 @@ app.get('/webhook', (req, res) => {
   res.sendStatus(200)
 })
 
-app.post('/webhook', (req, res) => {
+app.post('/bot.js', (req, res) => {
   if(req.body.events == undefined){
     res.sendStatus(200)
   }

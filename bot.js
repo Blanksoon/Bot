@@ -29,28 +29,18 @@ app.post('/bot.js', (req, res) => {
     res.sendStatus(200)
   }
   else{
-  var text = req.body.message.text
-  //var text = req.body.events[0].message.text
-  var sender = 'U75f70c75f265fc94b607ec8daa855f12';
-  //var sender = req.body.events[0].source.userId
-  //var replyToken = req.body.events[0].replyToken
+  var text = req.body.events[0].message.text
+  var sender = req.body.events[0].source.userId
+  var replyToken = req.body.events[0].replyToken
   console.log(text, sender, replyToken)
   console.log(typeof sender, typeof text)
   // console.log(req.body.events[0])
-  // if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
-  //   sendText(sender, text)
-  // }
-  //if(sender == 'Ufdfa4b8014b183970b1b89965b79b87')
-  // if (text === 'สวัสดี' || text === 'Hello' || text === 'hello' || text === 'www') {
-  //   sendText(sender, text)
-  // }
-  if(text === "send"){
+  if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
     sendText(sender, text)
   }
   res.sendStatus(200)
   }
 })
-
 
 function sendText (sender, text) {
   let data = {
@@ -58,30 +48,9 @@ function sendText (sender, text) {
     messages: [
       {
         type: 'text',
-        text: 'www.google.com กรุณาคลิกลิ้งค์'
+        text: 'สวัสดี ขอต้อนรับสู่ bear-it'
       }
     ]
-  
-  // if(text == 'wwww'){
-  //   data = {
-  //   to: sender,
-  //   messages: [
-  //     {
-  //       type: 'text',
-  //       text: 'www.google.com กรุณาคลิกลิ้งค์'
-  //     }
-  //   ]
-  // }
-  // }else{
-  // data = {
-  //   to: sender,
-  //   messages: [
-  //     {
-  //       type: 'text',
-  //       text: 'สวัสดี' + sender
-  //     }
-  //   ]
-  // }
   }
   request({
     headers: {

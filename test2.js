@@ -28,9 +28,9 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res){
-  var text = req.body.events.message.text
-  var sender = req.body.events.source.userId
-  var replyToken = req.body.events.replyToken
+  var text = req.body.events[0].message.text
+  var sender = req.body.events[0].source.userId
+  var replyToken = req.body.events[0].replyToken
   //console.log(text);      // your JSON
   //console.log(sender);      // your JSON
   //console.log(replyToken);      // your JSON

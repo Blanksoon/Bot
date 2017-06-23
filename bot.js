@@ -39,7 +39,7 @@ app.post('/bot.js', (req, res) => {
   //   sendText(sender, text)
   // }
   //if(sender == 'Ufdfa4b8014b183970b1b89965b79b87')
-  if (text === 'สวัสดี' || text === 'Hello' || text === 'hello' || text === 'sideline') {
+  if (text === 'สวัสดี' || text === 'Hello' || text === 'hello' || text === 'www') {
     sendText(sender, text)
   }
   res.sendStatus(200)
@@ -65,7 +65,7 @@ function sendText (sender, text) {
     messages: [
       {
         type: 'text',
-        text: 'สวัสดีค่ะ เราเป็นผู้ช่วยปรึกษาด้านความรัก สำหรับหมามิ้น 💞 ' + sender
+        text: 'สวัสดี' + sender
       }
     ]
   }

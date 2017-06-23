@@ -1,30 +1,32 @@
 var express = require('express')
 var bodyParser = require('body-parser')
+var request = require('request')
 var app = express();
 
 app.use(express.bodyParser());
 app.set('port', (process.env.PORT || 4000))
 
-app.get('/', function(request, response){
+app.get('/', function(req, res){
   // var text = request.body.events.message.text
   // var sender = request.body.events.source.userId
   // var replyToken = request.body.events.replyToken
   //console.log(text);      // your JSON
   //console.log(sender);      // your JSON
   //console.log(replyToken);      // your JSON
-  response.send(request.body);    // echo the result back
+  response.send(req.body);    // echo the result back
   //response.sendStatus(200)
 });
 
-app.post('/', function(request, response){
-  var text = request.body.events.message.text
-  var sender = request.body.events.source.userId
-  var replyToken = request.body.events.replyToken
+app.post('/', function(req, res){
+  var text = req.body.events.message.text
+  var sender = req.body.events.source.userId
+  var replyToken = req.body.events.replyToken
   //console.log(text);      // your JSON
   //console.log(sender);      // your JSON
   //console.log(replyToken);      // your JSON
-  response.send(request.body);    // echo the result back
+  res.send(req.body);    // echo the result back
   if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
+    console.log("in text")
     sendText(sender, text)
   }
   //response.sendStatus(200)
@@ -49,9 +51,9 @@ function sendText (sender, text) {
     method: 'POST',
     body: data,
     json: true
-  }, function (err, response, body) {
+  }, function (err, res, body) {
     if (err) console.log('error')
-    if (response) console.log('success')
+    if (res) console.log('success')
     if (body) console.log(body)
   })
 }
